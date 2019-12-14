@@ -15,7 +15,7 @@ import java.util.concurrent.Phaser;
 
 public class Jdial {
     public static void main(String[] args) {
-        ArgumentParser parser = ArgumentParsers.newFor("dail example").build()
+        ArgumentParser parser = ArgumentParsers.newFor("dail").build()
                 .defaultHelp(true)
                 .description("An example of server ports scanning.");
         parser.addArgument("--hostname")
