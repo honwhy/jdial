@@ -47,7 +47,7 @@
       <!--
           Compile-time (AoT) instrumentation; use _either_ AoT or agent-based, not both
       -->
-      <!--plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -59,10 +59,10 @@
               <tasks>
                 <property name="ant_classpath" refid="maven.dependency.classpath"/>
                 <taskdef name="instrumentationTask" classname="co.paralleluniverse.fibers.instrument.InstrumentationTask"
-                         classpath="${ant_classpath}"/-->
+                         classpath="${ant_classpath}"/>
                 <!-- Use "allowMonitors" to allow instrumenting methods containing synchronization -->
                 <!-- instrumentationTask allowMonitors="true" -->
-                <!--instrumentationTask>
+                <instrumentationTask>
                   <fileset dir="${project.build.directory}/classes/" includes="**/*.class"/>
                 </instrumentationTask>
               </tasks>
@@ -72,7 +72,7 @@
             </goals>
           </execution>
 
-          <execution>
+          <!-- execution>
             <id>instrument-test-classes</id>
             <phase>test-compile</phase>
             <configuration>
@@ -90,9 +90,9 @@
             <goals>
               <goal>run</goal>
             </goals>
-          </execution>
+          </execution -->
         </executions>
-      </plugin-->
+      </plugin>
 
       <!-- Collecting classpath entries as properties in the form groupId:artifactId:type:[classifier]
            as per http://maven.apache.org/plugins/maven-dependency-plugin/properties-mojo.html -->
@@ -121,7 +121,7 @@
             <!-- Debug -->
             <!-- argument>-Xdebug<argument -->
             <!-- argument>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005<argument -->
-            
+
             <!-- Configure memory settings as needed -->
             <!-- argument>-Xmx1000m</argument -->
 
@@ -133,7 +133,7 @@
             <argument>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argument>
 
             <!-- Enable if using compile-time (AoT) instrumentation -->
-            <!-- argument>-Dco.paralleluniverse.fibers.disableAgentWarning</argument -->
+            <argument>-Dco.paralleluniverse.fibers.disableAgentWarning</argument>
 
             <!-- Quasar Agent for JDK 7 -->
             <!-- argument>-javaagent:${co.paralleluniverse:quasar-core:jar}</argument-->
@@ -146,10 +146,6 @@
 
             <!-- Main class -->
             <argument>com.honey.Jdial</argument>
-            <argument>--hostname</argument>
-            <argument>baidu.com</argument>
-            <argument>--end-port</argument>
-            <argument>81</argument>
           </arguments>
         </configuration>
       </plugin>
@@ -180,6 +176,37 @@
           <!-- Quasar Agent for JDK 8 -->
           <argLine>-javaagent:${co.paralleluniverse:quasar-core:jar:jdk8}</argLine>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.honey.Jdial</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>com.honey.Jdial</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
