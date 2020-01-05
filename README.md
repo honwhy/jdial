@@ -2,6 +2,9 @@
 
 Inspired by https://mp.weixin.qq.com/s/W9ZKYsnSy8RQbXUjxpr-_Q
 
+* [dial](https://github.com/honwhy/dial)
+* [kdial](https://github.com/honwhy/kdial)
+
 run the project,
 ```
 mvn clean compile dependency:properties exec:exec
