@@ -15,7 +15,7 @@ to change command line arguments, modify argument after main class in pom.xml fi
 ```xml
 <arguments>
     ...
-    <argument>com.honey.Jdial</argument>
+    <argument>com.github.honwhy.Jdial</argument>
     <argument>--hostname</argument>
     <argument>baidu.com</argument>
     <argument>--end-port</argument>
@@ -26,7 +26,7 @@ eg.
 ```xml
 <arguments>
     ...
-    <argument>com.honey.Jdial</argument>
+    <argument>com.github.honwhy.Jdial</argument>
     <argument>--hostname</argument>
     <argument>google.com</argument>
     <argument>--end-port</argument>

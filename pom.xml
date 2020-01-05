@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.honey</groupId>
+  <groupId>com.github.honwhy</groupId>
   <artifactId>jdial</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -114,7 +114,7 @@
         <artifactId>exec-maven-plugin</artifactId> <!-- Run with "mvn compile dependency:properties exec:exec" -->
         <version>1.3.2</version>
         <configuration>
-          <mainClass>com.honey.Jdial</mainClass>
+          <mainClass>com.github.honwhy.Jdial</mainClass>
           <workingDirectory>target/classes</workingDirectory>
           <executable>java</executable>
           <arguments>
@@ -145,7 +145,7 @@
             <argument>-classpath</argument><classpath/>
 
             <!-- Main class -->
-            <argument>com.honey.Jdial</argument>
+            <argument>com.github.honwhy.Jdial</argument>
             <argument>--hostname</argument>
             <argument>baidu.com</argument>
             <argument>--end-port</argument>
