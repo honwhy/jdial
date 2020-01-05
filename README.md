@@ -2,6 +2,8 @@
 
 Inspired by https://mp.weixin.qq.com/s/W9ZKYsnSy8RQbXUjxpr-_Q
 
+check other language implementations
+
 * [dial](https://github.com/honwhy/dial)
 * [kdial](https://github.com/honwhy/kdial)
 
