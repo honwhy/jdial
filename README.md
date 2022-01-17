@@ -1,4 +1,4 @@
-# *com.honey:jdial:1.0-SNAPSHOT*
+# *com.github.honwhy:jdial:1.0-SNAPSHOT*
 
 Inspired by https://mp.weixin.qq.com/s/W9ZKYsnSy8RQbXUjxpr-_Q
 
